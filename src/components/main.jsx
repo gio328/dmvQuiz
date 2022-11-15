@@ -2,7 +2,7 @@ import React from 'react';
 import Answers from './Answers';
 import Popup from './Popup';
 import Footer from './Footer';
-import BoldText from './BoldText';
+//import BoldText from './BoldText';
 
 
 
@@ -11,18 +11,20 @@ class Main extends React.Component {
         super(props);
         
         this.data = this.props.data;
+        this.popupInitialState = this.props.popupInitialState;
         this.state = {
             nr: 0,
             total: this.data.length,
             showButton: false,
             questionAnswered: false,
             score: 0,
-            displayPopup: 'flex',
             answerButtonStyles: ['', '', '', ''],
             text: '',
-            retake: false
-            //containerKey: 1
+            retake: false,
+            displayPopup: this.props.repeat //repeat value is flex or none
+           
         }
+
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
         this.handleStartQuiz = this.handleStartQuiz.bind(this);
@@ -31,7 +33,6 @@ class Main extends React.Component {
     }
 
     pushData(nr) {
-        //console.log('data: ',this.data)
         this.setState({
             question: this.data[nr].question,
             answers: [this.data[nr].answers[0], this.data[nr].answers[1], this.data[nr].answers[2], this.data[nr].answers[3] ],
@@ -52,12 +53,13 @@ class Main extends React.Component {
 
     nextQuestion() {
         let { nr, total, score } = this.state;
-        
-        if(nr === total){
+
+        if(nr === total){ //if quiz is finished
             this.setState({
                 displayPopup: 'flex',
                 text: `You have completed the practice test. \n You got ${score} out of ${total} question(s).`
             });
+            //this.setDisplayPopup('flex');
             if(score < total){
                 this.setState({
                     retake: true
@@ -91,6 +93,7 @@ class Main extends React.Component {
             displayPopup: 'none',
             nr: 1
         });
+        
     }
 
     handleIncreaseScore() {
@@ -101,12 +104,12 @@ class Main extends React.Component {
 
 
     render() {
-        let { nr, total, question, answers, correct, img,  showButton, questionAnswered,  answerButtonStyles, displayPopup, text, retake} = this.state;
-        //console.log('img: ', img);
+        let { nr, total, question, answers, correct, img,  showButton, questionAnswered, displayPopup, answerButtonStyles, text, retake} = this.state;
         return (
             <div  className="container">
-                <Popup style={{display: displayPopup}} resetKey={this.props.resetKey}  retake={retake} text={text} startQuiz={this.handleStartQuiz} score={this.state.score} total={total}/>
-
+                <Popup style={{display: displayPopup}} resetKey={this.props.resetKey}  retake={retake} text={text} 
+                startQuiz={this.handleStartQuiz} score={this.state.score} total={total} popupInitialState={this.popupInitialState}/>
+               
                 <div className="row">
                     <div className="col-lg-10 col-lg-offset-1">
                         <div id="question">

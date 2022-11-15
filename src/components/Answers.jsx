@@ -1,16 +1,9 @@
 import React, {useState, useEffect} from "react";
-//import './answers.css';
-
-// const initialState = {
-//     isAnswered: false
-//     //mistakes: []
-// } 
 
 const Answers = ({answers, question, correct, img, showButton, answerButtonStyles, isAnswered, increaseScore, mistakes}) => {
 
     const [state, setState] = useState({ isAnswered: false, answerButtonStyles});
-    //console.log('setMistakes: ',setMistakes);
-
+   
     const checkAnswer = (e) => {
         
         if(!isAnswered) {
@@ -30,16 +23,13 @@ const Answers = ({answers, question, correct, img, showButton, answerButtonStyle
             
             setState({
                 ...state,
-                answerButtonStyles: changeStyle    ///// 
+                answerButtonStyles: changeStyle 
             })
 
             showButton();
         }
     }
 
-    // useEffect( () => {
-    //     console.log('mistakes: ', state.mistakes);
-    // }, [state.mistakes]);
     useEffect( () => {
         state.answerButtonStyles = ['', '', '', ''];
     },[state.answerButtonStyles]);

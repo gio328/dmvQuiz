@@ -1,8 +1,8 @@
 import dmvData from "./dmvData"
-import popUp from '../components/Popup';
-import React from 'react'
+//import popUp from '../components/Popup';
+//import React from 'react'
 
-let data = dmvData;
+//let data = dmvData;
 const DataComponent = (retake) => {
   console.log('retake', retake)
       const retakeData = [{

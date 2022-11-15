@@ -1,21 +1,11 @@
-import React, {useState} from "react";
-import DataComponent from "../data/DataComponent";
+import React, {useEffect, useState} from "react";
 
-const initialState = {
-    time: 'start',
-    title: 'Welcome to DMV Practice Test',
-    text: 'This App Will Simulate DMV Computer Test. \n \n Galingan mo love ko. I Love you' ,
-    buttonText: 'Start the Test' 
-}
-
-const Popup = ({ style, resetKey, startQuiz, text, retake, score, total}) => {
+const Popup = ({ style, resetKey, startQuiz, text, retake, score, total, popupInitialState}) => {
    
-    //console.log('retake: ', retake );
-    const [state, setState] = useState(initialState);
+    const [state, setState] = useState(popupInitialState);
 
     const popupHandle = () => {
         let { time } = state;
-        //console.log('popUp has been called..');
 
         if(time === 'start'){
             setState({
@@ -30,10 +20,13 @@ const Popup = ({ style, resetKey, startQuiz, text, retake, score, total}) => {
     }
 
     const mistakesHandle = () => {
-        DataComponent(retake);
+        setState({
+            time: 'end',
+            title: 'Finish!',
+            buttonText: 'Restart'
+        })
         resetKey(retake);
-        //setContainerKey();
-        //return <App />
+
     }
 
     const displayEmoji = () => {
