@@ -2,6 +2,12 @@ import Images from "../images";
 
 const dmvData = [
     {
+        question: 'How do you tell a jeepney driver to stop the jeepney?',
+        answers: ['Hinay lang noy!', 'Para po!', 'Yawa ka, hunong oi', 'Sukli nya kol'],
+        correct: 1,
+        img: <img src={Images.jeepney2} alt="jeepney" width="130" height="130" />
+     },
+    {
         question: 'This symbol implies that',
         answers: ['The upcoming road is blocked', 'A railroad crossing is up ahead', 'A highway intersection is up ahead', 'The road up ahead is being fixed'],
         correct: 2,
@@ -242,12 +248,7 @@ const dmvData = [
         correct: 1,
         img: ''
      },
-     {
-        question: 'How do you tell a jeepney driver to stop the jeepney?',
-        answers: ['Hinay lang noy!', 'Para po!', 'Yawa ka, hunong oi', 'Sukli nya kol'],
-        correct: 1,
-        img: <img src={Images.jeepney2} alt="jeepney" width="130" height="130" />
-     }
+   
     
 ]
 
