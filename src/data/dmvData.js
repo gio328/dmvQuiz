@@ -241,6 +241,12 @@ const dmvData = [
         answers: ['the lane on the right', 'the lane on the left', 'a lane in the center', 'None of the preceding'],
         correct: 1,
         img: ''
+     },
+     {
+        question: 'How do you tell a jeepney driver to stop the jeepney?',
+        answers: ['Hinay lang noy!', 'Para po!', 'Yawa ka, hunong oi', 'Sukli nya kol'],
+        correct: 1,
+        img: <img src={Images.jeepney2} alt="jeepney" width="130" height="130" />
      }
     
 ]
